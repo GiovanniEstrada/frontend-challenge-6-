@@ -1,0 +1,49 @@
+<div class="background">
+  <header id="header">
+    <div class="container">
+      <div class="title-container">
+        <h1 class="title">TODO</h1>
+        <div class="switch" (click)="darkMode()"></div>
+      </div>
+      <div class="data">
+        <div class="circle"></div>
+        <input
+          [(ngModel)]="textInput"
+          type="text"
+          class="input"
+          id="task"
+          (keydown.enter)="addTask()"
+          placeholder="Create a new todo..."
+          #desc
+        />
+      </div>
+    </div>
+  </header>
+
+  <div class="container-main">
+    <div cdkDropList class="tasks" (cdkDropListDropped)="drop($event)">
+      <div class="container-task" *ngFor="let task of result" cdkDrag>
+        <div
+          [ngClass]="task.state ? 'active' : ''"
+          class="successful {{ task.id }}"
+          (click)="completed(task.id)"
+        >
+          <div [ngClass]="task.state ? 'active' : ''" class="check"></div>
+        </div>
+        <div [ngClass]="task.state ? 'active' : ''" class="desc">
+          {{ task.task }}
+        </div>
+        <div class="delete" (click)="delete(task.id)"></div>
+      </div>
+    </div>
+    <div class="filter">
+      <p class="nItems">{{ items }} items left</p>
+      <div class="filter-items">
+        <p class="all focus" (click)="filterAll()">All</p>
+        <p class="active-btn" (click)="filterActive()">Active</p>
+        <p class="completed" (click)="filterCompleted()">Completed</p>
+      </div>
+      <p class="clear" (click)="clear()">Clear Completed</p>
+    </div>
+  </div>
+</div>
