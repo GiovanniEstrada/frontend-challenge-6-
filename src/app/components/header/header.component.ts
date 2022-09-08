@@ -9,23 +9,7 @@ import { CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop'
 })
 export class HeaderComponent implements OnInit {
 
-   tasks: any = [
-    {
-      id: 0,
-      task: "First",
-     state: false
-    },
-    {
-      id: 1,
-      task: "First",
-     state: false
-    },
-    {
-      id: 2,
-      task: "First",
-     state: false
-    }
-  ];
+   tasks: any = [];
   
   result: any[] = this.tasks
   
